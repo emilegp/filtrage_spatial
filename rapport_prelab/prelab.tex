@@ -156,7 +156,67 @@ Polytechnique Montréal\\}
 
 \section{Hypothèses}
 
+\subsection{Patron d'échec}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.68]{check.png}
+  \caption{Affichage du patron d'échec original et de sa transformée de fourier}
+  \label{echec_patron}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.68]{check_mask.png}
+  \caption{Filtre utilisé pour enlever les oscillations en $\hat{y}$ et son applications sur la transformée de Fourier}
+  \label{echec_filtre}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.68]{check_filtre.png}
+  \caption{Comparaison entre le patron d'échec initial et filtré}
+  \label{echec_comp}
+\end{figure}
+
+\subsection{Filtres passe-bas top-hat}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.68]{marvin_og.png}
+  \caption{Image originale de Marvin et de sa transformée de Fourier}
+  \label{cat_og}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.7]{marvin_post_filter_fc_50.png}
+  \caption{Filtre passe-bas top-hat à $f_c = 50$ pixels$^{-1}$ appliqué sur l'image de Marvin}
+  \label{fc50hat}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.7]{marvin_post_filter_fc_75.png}
+  \caption{Filtre passe-bas top-hat à $f_c = 75$ pixels$^{-1}$ appliqué sur l'image de Marvin}
+  \label{fc75}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.7]{marvin_post_filter_fc_100.png}
+  \caption{Filtre passe-bas top-hat à $f_c = 100$ pixels$^{-1}$ appliqué sur l'image de Marvin}
+  \label{fc100}
+\end{figure}
+
+\subsection{Filtre gaussien}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.7]{marvin_gauss_fc_50.png}
+  \caption{Filtre gaussien à $f_c = 50$ pixels$^{-1}$ appliqué sur l'image de Marvin}
+  \label{gauss}
+\end{figure}
 
 \clearpage
 
