@@ -156,7 +156,11 @@ Polytechnique Montréal\\}
 
 \section{Hypothèses}
 
+Afin de mieux comprendre et prédire ce qui sera vu avec les montages présentés précédemment, il est possible d'émettre quelques hypothèses en lien avec l'application de filtres sur des images. Cette section présente donc le filtrage et l'analyse d'images de référence disponible dans le répertoire du cours.
+
 \subsection{Patron d'échec}
+
+La première image filtrée est un simple patron d'échec. Pour appliquer un filtre, la transformée de Fourier de l'image est prise, tel qu'affiché à la figure \ref{echec_patron} :
 
 \begin{figure}[H]
   \centering
@@ -165,12 +169,16 @@ Polytechnique Montréal\\}
   \label{echec_patron}
 \end{figure}
 
+Pour enlever les oscillations en $\hat{y}$, la fonction fenêtre de la figure \ref{echec_filtre}, qui agit comme filtre passe-bande, est appliquée sur la transformée de Fourier :
+
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.68]{check_mask.png}
   \caption{Filtre utilisé pour enlever les oscillations en $\hat{y}$ et son applications sur la transformée de Fourier}
   \label{echec_filtre}
 \end{figure}
+
+Enfin, la transformée inverse sur l'application du filtre donne le patron d'échec avec toutes les orcillations en $\hat{y}$ filtrées, tel que montré à la figure \ref{echec_comp} :
 
 \begin{figure}[H]
   \centering
@@ -180,6 +188,8 @@ Polytechnique Montréal\\}
 \end{figure}
 
 \subsection{Filtres passe-bas top-hat}
+
+La seconde image filtrée est celle du chat Marvin. Il est possible de la voir ainsi que sa transformée de Fourier à la figure \ref{cat_og}. Ensuite, des filtre passe-bas top hat sont défini aussi comme des fenêtres mais circulaires. Il est possible de voir ces filtres et leurs applications aux figures \ref{fc50hat}, \ref{fc75} et \ref{fc100} pour $f_c = 50, 75,100$ respectivement.
 
 \begin{figure}[H]
   \centering
@@ -209,7 +219,17 @@ Polytechnique Montréal\\}
   \label{fc100}
 \end{figure}
 
+Pour les trois figures précédentes, un zoom est aussi fait sur l'oreille gauche de Marvin. Il est possible d'y observer une sorte d'onde qui fait le contour de l'oreille et du reste de la tête. Cet effet est plus prononcé pour les filtres de plus basse fréquence. Cela fait en sorte que l'image filtrée la plus claire est celle avec la fréquence de coupure la plus haute, soit $f_c=100$ pixels$^{-1}$ à la figure \ref{fc100}. Il est donc possible d'émettre l'hypothèse que lors des manipulations, la qualité de l'image filtrée augmentera avec l'ouverture de l'iris, qui va agir comme  le filtre passe-bas top hat ici. L'effet ondulatoire sera discuté plus loin.
+
 \subsection{Filtre gaussien}
+
+Enfin, la figure \ref{gauss} montre l'application d'un filtre gaussien, où la fréquence de coupure $f_c = 50$ pixels$^{-1}$ est défini comme l'écart-type de cette gaussienne :
+
+\begin{equation}
+  f(x) = e^{\frac{-\left( x-\mu \right)^{2}}{2f_c^2}}
+\end{equation}
+
+où $\mu$ est la position au centre de l'image. Cela donne :
 
 \begin{figure}[H]
   \centering
@@ -217,6 +237,17 @@ Polytechnique Montréal\\}
   \caption{Filtre gaussien à $f_c = 50$ pixels$^{-1}$ appliqué sur l'image de Marvin}
   \label{gauss}
 \end{figure}
+
+Le résultat est une image très peu floutée, et en regardant le zoom sur l'oreille, les ondes sont disparues. Le filtre gaussien est donc idéal pour ce cas. Pour expliquer pourquoi le filtre gaussien ne présente pas les ondes, il est bon de se pencher à nouveau sur le filtre top-hat. Ce dernier est essentiellement une fonction rectangle. Sa transformée de fourier est connue comme étant une fonction sinc :
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.7]{sinc.png}
+  \caption{Représentation de la fonction sinc}
+  \label{sinc}
+\end{figure}
+
+Les ondes observées près des contours sont donc un symptôme de la transformée de Fourier inverse de la fonction rectangle, qui est aussi un sinus cardinal. Les changements drastiques d'intensité voient donc les propriétés du sinc apparaître, notamment les oscillations autour de $\frac{\sin\left( x \right)}{x}  = 0$ pour $x$ éloigné de 0 à la figure \ref{sinc}. C'est l'origine des "ondes" bien visibles près des oreilles de Marvin aux figures \ref{fc50hat}, \ref{fc75} et \ref{fc100}. Quant au filtre gaussien, étant donné qu'une fonction gaussienne est lisse et que sa transformée de Fourier est connue comme étant une autre gaussienne, aucun changement "drastique" ni d'apparence ondulatoire n'est perceptible après le filtrage.
 
 \clearpage
 
