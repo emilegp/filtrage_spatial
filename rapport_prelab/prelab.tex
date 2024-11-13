@@ -141,10 +141,54 @@ Polytechnique Montréal\\}
 \section{Introduction}
 
 \section{Théorie}
+Afin de comprendre les différents phénomènes physiques réalisés lors de cette expérience, cette section présente les principes physiques et mathématiques importants relativement à l'expérimentation.
 
 \subsection{Optique de Fourier}
+L'optique de Fourier, principalement basée sur les idées de convolution, de corrélation spatiale et de transformée de Fourier, est une approche mathématique utilisée pour décrire et analyser la propagation d'ondes lumineuses. Cette méthode considère, contrairement à l'optique géométrique, la nature ondulatoire de la lumière, ainsi la forme de l'onde consiste en une combinaison, ou une superposition, d'ondes planes et, plus précisément, d'ondes sphériques \textcolor{red}{(Source 1)}. De cette manière, en plus de la trajectoire de la lumière, l'optique de Fourier permet d'étudier les variations d'amplitude et de phase causées par les phénomènes d'interférence et de diffraction. En appliquant la transformée de Fourier sur les ondes lumineuses, donnée par la formule suivante :
+\begin{equation}
+  \mathcal{F}(k)=\int_{-\infty}^{\infty}f(x)e^{-ikx}dx
+\end{equation}
+Il est possible de décomposer un champ optique en somme de fréquence spatiales, chacune correspondant à une direction et à une propagation spécifique \textcolor{red}{(Source 2)}. L'optique de Fourier est, généralement, utilisée pour la lumière monochromatique, décrite  par des amplitudes complexes, et pour un modèle d'onde purement scalaire. Mathématiquement, cette notion se transcrit en commençant avec l'équation d'onde homogène donnée par :
+\begin{equation}
+  \left(\nabla^{2}-\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}\right)u(\mathbf{r}, t)=0
+\end{equation}
+Où $u(\mathbf{r}, t)$ est une fonction d'onde scalaire. En d'autres termes, en considérant une onde lumineuse de fréquence fixe, tel qu'un laser monomode, il est possible d'assumer, à l'aide de la dépendance temporelle des solutions d'onde à la fréquence angulaire, que la fonction d'onde scalaire est donnée par :
+\begin{equation}
+  u(\mathbf{r}, t)=\mathrm{Re}\{\psi(\mathbf{r})e^{i\omega t}\}
+\end{equation}
+À partir de ces équations ci-dessus et sous certaines conditions, telles que $z$ est nul, il est possible d'obtenir une solution générale, pour une fréquence fixe, à l'équation d'ondes homogène, soit une intégrale de la superposition de l'ensemble des solutions d'ondes planes \textcolor{red}{(Source 3)}.
+\begin{equation}
+  \psi(x, y, z)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi_{0}(k_{x},k_{y})e^{i(k_{x}x+k_{y}y)}dk_{x}dk_{y}
+\end{equation}
+Correspondant simplement à une relation de transformée de Fourier entre le champ et les composantes de l'ondes. Ainsi, la transformation de Fourier permet de passer de la description spatiale d’un champ lumineux à sa description dans le domaine fréquentiel.
 
-\subsection{Diffraction et système 4f}
+% Source 1 : https://www.rp-photonics.com/fourier_optics.html
+% Source 2 : https://www.sciencedirect.com/topics/physics-and-astronomy/fourier-optics
+% Source 3 : https://en.wikipedia.org/wiki/Fourier_optics
+
+\subsection{Diffraction}
+La diffraction est un phénomène physique correspondant à une interférence, ou une diffusion, des ondes autour des points d'une ouverture \textcolor{red}{(Source A)}. En optique, deux types de diffraction peuvent être observés : la diffraction de Fresnel et la diffraction de Fraunholer. Dans le cas de Fresnel, ce type de diffraction survient lorsque la source, ou le plan image, est relativement près de le l'ouverture, c'est-à-dire en champ proche. La diffraction de Fraunholer, pour sa part, se produit lorsque la source de lumière et le plan image sont suffisamment distancés de l'objet afin que les ondes puissent être considérées comme parallèles \textcolor{red}{(Source B)}.
+
+% Source A : https://www.olympus-lifescience.com/fr/microscope-resource/primer/lightandcolor/diffraction/
+% Source B : pdf FourierOptics
+
+\subsubsection{Approximation de Fraunholer}
+L'approximation de Fraunholer correspond à une simplification mathématique de la diffraction pour les champs lointains. Cette approximation permet d'analyser les patrons de diffraction produits par les objets diffractants, en décrivant les ondes lumineuses comme planes après le passage de l'objet. Mathématiquement, cette approximation peut se traduire de la manière suivante :
+\begin{equation}
+  U(x,y,z)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}A(x',y')e^{-i(f_{x}x'+f_{y}y')}dx'dy'
+\end{equation}
+En optique, cette équation, l'équation de diffraction de Fraunholer, est utilisée afin d'obtenir directement le motif de diffraction en fonction de sa transformée de Fourier \textcolor{red}{(Source C)}. 
+
+% Source C : https://phys.libretexts.org/Bookshelves/Optics/BSc_Optics_(Konijnenberg_Adam_and_Urbach)/06%3A_Scalar_diffraction_optics/6.07%3A_Fresnel_and_Fraunhofer_Approximations
+
+\subsection{Système 4F}
+Les systèmes optiques à configuration 4F sont des systèmes utilisant l'optique de Fourier. Ces systèmes de deux lentilles sont couramment utilisés pour manipuler les fréquences spatiales d'une image en exploitant la transformée de Fourier des objets des plans focaux. La configuration 4F comprend un plan objet, situé à une distance de la première lentille égale à la focale de cette dite lentille, et un plan image, situé à une distance focale derrière la seconde lentille. Les deux lentilles sont séparées par le plan de Fourier, où l'objet subit une transformée de Fourier \textcolor{red}{(Source Alpha)}.
+
+Le fonctionnement de ce type de configuration repose sur le principe de la transformée de Fourier. En effet, la première lentille transforme l'objet en une image de Fourier, c'est-à-dire que celle-ci est décomposée en composante de fréquence spatiale. Dans le plan de Fourier, où il est possible d'ajouter des filtres optiques, l'image transmise par la première lentille subit une transformée de Fourier. Cette transformée est, ensuite, transmise à la seconde lentille qui, par la transformée inverse, reconstitue l'image de l'objet. Cette image est, finalement, transmise au plan image afin d'être observée \textcolor{red}{(Source Bravo)}.
+
+% Source Alpha : https://www.opticsforhire.com/blog/4f-optical-system-fourier-optics/
+
+% Source Bravo : pdf nikhef
 
 \subsection{Signaux, images et filtres}
 
