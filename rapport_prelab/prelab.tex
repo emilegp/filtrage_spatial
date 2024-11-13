@@ -143,7 +143,7 @@ Polytechnique Montréal\\}
 \section{Théorie}
 Afin de comprendre les différents phénomènes physiques réalisés lors de cette expérience, cette section présente les principes physiques et mathématiques importants relativement à l'expérimentation.
 
-\subsection{Optique de Fourier}
+\subsection{Optique de Fourier}\label{Fourier_optic}
 L'optique de Fourier, principalement basée sur les idées de convolution, de corrélation spatiale et de transformée de Fourier, est une approche mathématique utilisée pour décrire et analyser la propagation d'ondes lumineuses. Cette méthode considère, contrairement à l'optique géométrique, la nature ondulatoire de la lumière, ainsi la forme de l'onde consiste en une combinaison, ou une superposition, d'ondes planes et, plus précisément, d'ondes sphériques \textcolor{red}{(Source 1)}. De cette manière, en plus de la trajectoire de la lumière, l'optique de Fourier permet d'étudier les variations d'amplitude et de phase causées par les phénomènes d'interférence et de diffraction. En appliquant la transformée de Fourier sur les ondes lumineuses, donnée par la formule suivante :
 \begin{equation}
   \mathcal{F}(k)=\int_{-\infty}^{\infty}f(x)e^{-ikx}dx
@@ -191,6 +191,11 @@ Le fonctionnement de ce type de configuration repose sur le principe de la trans
 % Source Bravo : pdf nikhef
 
 \subsection{Signaux, images et filtres}
+Tel que mentionné dans la section \ref{Fourier_optic}, l'optique de Fourier permet de passer au domaine fréquentiel spatial. De cette manière, les signaux, en optique de Fourier, correspondent à des distributions d'intensité lumineuses, ou phasiques, en fonction de la fréquence spatiale. Les images, produites par le traitement des signaux, sont alors représentées en termes de ces fréquences spatiales.
+
+Avec cette notion spatiale, les filtres, permettant la sélection de certaines composantes spatiales, peuvent être utilisés afin de manipuler l'information fréquentielle contenue dans les images, que ce soit en atténuant le bruit, en choisissant certaines fréquences, ou en accentuant les bords \textcolor{red}{(Source Z)}. Les filtres utilisés peuvent être de trois types différents : passe-bas, passe-haut et passe-bande. Par exemple, dans l'expérience réalisée, un filtre passe-bas haut-de-forme est utilisé, c'est-à-dire que les seules fréquences pouvant passer sont les basses fréquences spatiales jusqu'à une certaine coupure. Un autre filtre utilisé est le filtre gaussien qui, dans son cas, permet d'atténuer progressivement les hautes fréquences spatiales suivant une distribution gaussienne.
+
+% Source Z : https://fiveable.me/optical-computing/unit-4/fourier-optics-spatial-filtering/study-guide/cGhLAP7EssS8bwjb
 
 \section{Méthodologie}
 
