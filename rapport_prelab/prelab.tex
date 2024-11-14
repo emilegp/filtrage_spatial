@@ -197,7 +197,7 @@ La méthodologie de ce laboratoire a pour but d'appliquer un filtre passe-bas à
   \label{montage}
 \end{figure}
 
-Ce montage est constitué d'une source de lumière focalisée sur un sténopé à l'aide d'un objectif de microscope afin de produire un profil d'intensité gaussien. Ce profil est ensuite envoyé au travers d'une image acétate à l'aide d'une lentille convergente $f_1$ permettant d'en ajuster les dimensions. Il ne faut ni que le profil soit trop petit par rapport à l'acétate, ni qu'il soit trop gros. Une fois l'image formée, elle est transmise à la caméra par l'intermédiaire d'un système 4f composé de deux lentilles convergentes, $f_2$ et $f_3$, permettant de passer dans le domaine de Fourier. Les lentilles composants ce système n'ont, à l'inverse d'un système 4F classique, pas les mêmes distances focales. Celle de $f_3$ par exemple permet de modifier le grossissement de l'image vue par la camera exactement comme $f_1$ vis-à-vis de l'acétate. Les différentes lentilles utilisées lors de ce laboratoire sont : 
+Ce montage est constitué d'une source de lumière focalisée sur un sténopé à l'aide d'un objectif de microscope afin de produire un profil d'intensité gaussien. Ce profil est ensuite envoyé au travers d'une image acétate à l'aide d'une lentille convergente $f_1$ permettant d'en ajuster les dimensions. Il ne faut ni que le profil soit trop petit par rapport à l'acétate, ni qu'il soit trop gros. Une fois l'image formée, elle est transmise à la caméra par l'intermédiaire d'un système 4f composé de deux lentilles convergentes, $f_2$ et $f_3$, permettant de passer dans le domaine de Fourier. Les lentilles composants ce système n'ont, à l'inverse d'un système 4F classique, pas les mêmes distances focales. Celle de $f_3$, par exemple, permet de modifier le grossissement de l'image vue par la camera exactement comme $f_1$ vis-à-vis de l'acétate. Les différentes lentilles utilisées lors de ce laboratoire sont : 
 
 \begin{enumerate}
     \item $f_1$ = 30 cm, $\phi_1$ = 2"
@@ -240,7 +240,7 @@ Pour l'entièreté des images, les paramètres à utiliser sur le logiciel Thorc
     \item White balance → auto
 \end{enumerate}
 
-Une période de temps sera aussi allouée à la prise conscience de l'application du phénomène de façon concrète. 
+Une période de temps sera aussi allouée à la prise de conscience de l'application du phénomène de façon concrète. 
 
 \section{Hypothèses}
 
@@ -248,7 +248,7 @@ Afin de mieux comprendre et prédire ce qui sera vu avec les montages présenté
 
 \subsection{Patron d'échec}
 
-La première image filtrée est un simple patron d'échec. Pour appliquer un filtre, la transformée de Fourier de l'image est prise, tel qu'affiché à la figure \ref{echec_patron} :
+La première image filtrée est un simple patron d'échec. Pour appliquer un filtre, la transformée de Fourier de l'image est prise, telle qu'affichée à la figure \ref{echec_patron} :
 
 \begin{figure}[H]
   \centering
@@ -277,7 +277,7 @@ Enfin, la transformée inverse sur l'application du filtre donne le patron d'éc
 
 \subsection{Filtres passe-bas top-hat}
 
-La seconde image filtrée est celle du chat Marvin. Il est possible de la voir ainsi que sa transformée de Fourier à la figure \ref{cat_og}. Ensuite, des filtre passe-bas top hat sont défini aussi comme des fenêtres mais circulaires. Il est possible de voir ces filtres et leurs applications aux figures \ref{fc50hat}, \ref{fc75} et \ref{fc100} pour $f_c = 50, 75,100$ respectivement.
+La seconde image filtrée est celle du chat Marvin. Il est possible de la voir ainsi que sa transformée de Fourier à la figure \ref{cat_og}. Ensuite, des filtres passe-bas top hat sont définis aussi comme des fenêtres, mais circulaires. Il est possible de voir ces filtres et leurs applications aux figures \ref{fc50hat}, \ref{fc75} et \ref{fc100} pour $f_c = 50, 75,100$ respectivement.
 
 \begin{figure}[H]
   \centering
@@ -307,11 +307,11 @@ La seconde image filtrée est celle du chat Marvin. Il est possible de la voir a
   \label{fc100}
 \end{figure}
 
-Pour les trois figures précédentes, un zoom est aussi fait sur l'oreille gauche de Marvin. Il est possible d'y observer une sorte d'onde qui fait le contour de l'oreille et du reste de la tête. Cet effet est plus prononcé pour les filtres de plus basse fréquence. Cela fait en sorte que l'image filtrée la plus claire est celle avec la fréquence de coupure la plus haute, soit $f_c=100$ pixels$^{-1}$ à la figure \ref{fc100}. Il est donc possible d'émettre l'hypothèse que lors des manipulations, la qualité de l'image filtrée augmentera avec l'ouverture de l'iris, qui va agir comme  le filtre passe-bas top hat ici. L'effet ondulatoire sera discuté plus loin.
+Pour les trois figures précédentes, un zoom est aussi fait sur l'oreille gauche de Marvin. Il est possible d'y observer une sorte d'onde qui fait le contour de l'oreille et du reste de la tête. Cet effet est plus prononcé pour les filtres de plus basses fréquences. Cela fait en sorte que l'image filtrée la plus claire est celle avec la fréquence de coupure la plus haute, soit $f_c=100$ pixels$^{-1}$ à la figure \ref{fc100}. Il est donc possible d'émettre l'hypothèse que, lors des manipulations, la qualité de l'image filtrée augmentera avec l'ouverture de l'iris, qagissant comme le filtre passe-bas top hat ici. L'effet ondulatoire sera discuté plus loin.
 
 \subsection{Filtre gaussien}
 
-Enfin, la figure \ref{gauss} montre l'application d'un filtre gaussien, où la fréquence de coupure $f_c = 50$ pixels$^{-1}$ est défini comme l'écart-type de cette gaussienne :
+Enfin, la figure \ref{gauss} montre l'application d'un filtre gaussien, où la fréquence de coupure $f_c = 50$ pixels$^{-1}$ est définie comme l'écart-type de cette gaussienne :
 
 \begin{equation}
   f(x) = e^{\frac{-\left( x-\mu \right)^{2}}{2f_c^2}}
@@ -326,7 +326,7 @@ où $\mu$ est la position au centre de l'image. Cela donne :
   \label{gauss}
 \end{figure}
 
-Le résultat est une image très peu floutée, et en regardant le zoom sur l'oreille, les ondes sont disparues. Le filtre gaussien est donc idéal pour ce cas. Pour expliquer pourquoi le filtre gaussien ne présente pas les ondes, il est bon de se pencher à nouveau sur le filtre top-hat. Ce dernier est essentiellement une fonction rectangle. Sa transformée de fourier est connue comme étant une fonction sinc :
+Le résultat est une image très peu floutée, et, en regardant le zoom sur l'oreille, les ondes sont disparues. Le filtre gaussien est donc idéal pour ce cas. Pour expliquer pourquoi le filtre gaussien ne présente pas les ondes, il est bon de se pencher à nouveau sur le filtre top-hat. Ce dernier est essentiellement une fonction rectangle. Sa transformée de fourier est connue comme étant une fonction sinc :
 
 \begin{figure}[H]
   \centering
