@@ -4,7 +4,7 @@
 \usepackage{graphicx}
 \usepackage{etoolbox}
 \apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
-% \usepackage[numbers]{natbib}
+\usepackage[numbers]{natbib}
 \usepackage[T1]{fontenc}
 \usepackage{ragged2e}
 \usepackage[french]{babel}
@@ -139,17 +139,17 @@ Polytechnique Montréal\\}
 %----------------------------------------------------
 
 \section{Introduction}
-Les systèmes optiques sont des parties fondamentales dans le traitement et la transformation des images, permettant d'analyser et de manipuler les composantes optiques de la lumière. Parmi ces systèmes, le système optique à configuration 4F, basé sur le domaine de Fourier, se distingue par son efficacité à isoler, ou supprimer, les fréquences spatiales spécifiques. Dans le cadre de cette expérience, l'objectif est d'utiliser ces systèmes à configuration 4F afin d'appliquer des filtres passe-bas sur une image de Fourier en analysant une série d'images soumises à différents filtres. Pour ce faire, une source lumineuse est envoyée à travers le système optique composé de deux lentilles stratégiquement positionnées, les images sont, ensuite, prises en faisant variées les dimensions des ouvertures et des iris. Ces images permettront d'analyser les résolutions en fonction des dimensions de ces dits paramètres. Le document présent revient sur les étapes importantes de l'expérimentation. Ainsi, les principes physiques et mathématiques sont, d'abord, présentés dans la section \textit{Théorie} suivie par la méthodologie utilisée pour réaliser l'expérience. Ensuite, afin de comparer les résultats expérimentaux obtenus, les hypothèses, développées par un programme Python, sont présentées. Finalement, ces résultats sont illustrés et, par la suite, analysés dans la section \textit{Discussion.}
+Les systèmes optiques peuvent être des parties fondamentales dans le traitement et la transformation des images, permettant d'analyser et de manipuler les composantes optiques de la lumière. Parmi ces systèmes, le système optique à configuration 4f, basé sur le domaine de Fourier, se distingue par son efficacité à isoler, ou supprimer, les fréquences spatiales spécifiques. Dans le cadre de cette expérience, l'objectif est d'utiliser ces systèmes à configuration 4f afin d'appliquer des filtres passe-bas sur une image dans le domaine de Fourier en analysant une série d'images soumises à différents filtres. Pour ce faire, une source lumineuse est envoyée à travers le système optique composé de deux lentilles stratégiquement positionnées, les images sont, ensuite, prises en faisant varier les dimensions des ouvertures et des iris. Ces images permettront d'analyser les résolutions en fonction des dimensions de ces dits paramètres. Le document présent revient sur les étapes importantes de l'expérimentation. Ainsi, les principes physiques et mathématiques sont, d'abord, présentés dans la section \textit{Théorie} suivie par la méthodologie utilisée pour réaliser l'expérience. Ensuite, afin de comparer les résultats expérimentaux qui pourront être obtenus, les hypothèses, développées par un programme Python, sont présentées. Finalement, ces résultats sont illustrés et, par la suite, analysés dans la section \textit{Discussion.}
 
 \section{Théorie}
-Afin de comprendre les différents phénomènes physiques réalisés lors de cette expérience, cette section présente les principes physiques et mathématiques importants relativement à l'expérimentation.
+Afin de comprendre les différents phénomènes rencontrés lors de cette expérience, cette section présente les principes physiques et mathématiques importants relativement à l'expérimentation.
 
 \subsection{Optique de Fourier}\label{Fourier_optic}
-L'optique de Fourier, principalement basée sur les idées de convolution, de corrélation spatiale et de transformée de Fourier, est une approche mathématique utilisée pour décrire et analyser la propagation d'ondes lumineuses. Cette méthode considère, contrairement à l'optique géométrique, la nature ondulatoire de la lumière, ainsi la forme de l'onde consiste en une combinaison, ou une superposition, d'ondes planes et, plus précisément, d'ondes sphériques \textcolor{red}{(Source 1)}. De cette manière, en plus de la trajectoire de la lumière, l'optique de Fourier permet d'étudier les variations d'amplitude et de phase causées par les phénomènes d'interférence et de diffraction. En appliquant la transformée de Fourier sur les ondes lumineuses, donnée par la formule suivante :
+L'optique de Fourier, principalement basée sur les idées de convolution, de corrélation spatiale et de transformée de Fourier, est une approche mathématique utilisée pour décrire et analyser la propagation d'ondes lumineuses. Cette méthode considère, contrairement à l'optique géométrique, la nature ondulatoire de la lumière, ainsi la forme de l'onde consiste en une combinaison, ou une superposition, d'ondes planes et, plus précisément, d'ondes sphériques \cite{paschotta_fourier_2024}. De cette manière, en plus de la trajectoire de la lumière, l'optique de Fourier permet d'étudier les variations d'amplitude et de phase causées par les phénomènes d'interférence et de diffraction. En appliquant la transformée de Fourier sur les ondes lumineuses, donnée par la formule suivante :
 \begin{equation}
-  \mathcal{F}(k)=\int_{-\infty}^{\infty}f(x)e^{-ikx}dx
+  \mathcal{F}(k)=\int_{-\infty}^{\infty}f(x)e^{-ikx}dx,
 \end{equation}
-Il est possible de décomposer un champ optique en somme de fréquence spatiales, chacune correspondant à une direction et à une propagation spécifique \textcolor{red}{(Source 2)}. L'optique de Fourier est, généralement, utilisée pour la lumière monochromatique, décrite  par des amplitudes complexes, et pour un modèle d'onde purement scalaire. Mathématiquement, cette notion se transcrit en commençant avec l'équation d'onde homogène donnée par :
+il est possible de décomposer un champ optique en somme de fréquence spatiales, chacune correspondante à une direction et à une propagation spécifique \cite{noauthor_fourier_2024}. L'optique de Fourier est, généralement, utilisée pour la lumière monochromatique, décrite  par des amplitudes complexes, et pour un modèle d'onde purement scalaire. Mathématiquement, cette notion se transcrit en commençant avec l'équation d'onde homogène donnée par :
 \begin{equation}
   \left(\nabla^{2}-\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}\right)u(\mathbf{r}, t)=0
 \end{equation}
@@ -157,64 +157,52 @@ Où $u(\mathbf{r}, t)$ est une fonction d'onde scalaire. En d'autres termes, en 
 \begin{equation}
   u(\mathbf{r}, t)=\mathrm{Re}\{\psi(\mathbf{r})e^{i\omega t}\}
 \end{equation}
-À partir de ces équations ci-dessus et sous certaines conditions, telles que $z$ est nul, il est possible d'obtenir une solution générale, pour une fréquence fixe, à l'équation d'ondes homogène, soit une intégrale de la superposition de l'ensemble des solutions d'ondes planes \textcolor{red}{(Source 3)}.
+À partir de ces équations ci-dessus et sous certaines conditions, telles que $z$ nul, il est possible d'obtenir une solution générale, pour une fréquence fixe, à l'équation d'ondes homogène, soit une intégrale de la superposition de l'ensemble des solutions d'ondes planes \cite{noauthor_fourier_2024-1}.
 \begin{equation}
   \psi(x, y, z)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi_{0}(k_{x},k_{y})e^{i(k_{x}x+k_{y}y)}dk_{x}dk_{y}
 \end{equation}
 Correspondant simplement à une relation de transformée de Fourier entre le champ et les composantes de l'ondes. Ainsi, la transformation de Fourier permet de passer de la description spatiale d’un champ lumineux à sa description dans le domaine fréquentiel.
 
-% Source 1 : https://www.rp-photonics.com/fourier_optics.html
-% Source 2 : https://www.sciencedirect.com/topics/physics-and-astronomy/fourier-optics
-% Source 3 : https://en.wikipedia.org/wiki/Fourier_optics
-
 \subsection{Diffraction}
-La diffraction est un phénomène physique correspondant à une interférence, ou une diffusion, des ondes autour des points d'une ouverture \textcolor{red}{(Source A)}. En optique, deux types de diffraction peuvent être observés : la diffraction de Fresnel et la diffraction de Fraunholer. Dans le cas de Fresnel, ce type de diffraction survient lorsque la source, ou le plan image, est relativement près de le l'ouverture, c'est-à-dire en champ proche. La diffraction de Fraunholer, pour sa part, se produit lorsque la source de lumière et le plan image sont suffisamment distancés de l'objet afin que les ondes puissent être considérées comme parallèles \textcolor{red}{(Source B)}.
+La diffraction est un phénomène physique correspondant à une interférence, ou une diffusion, des ondes autour des points d'une ouverture \cite{abramowitz_diffraction_2024}. En optique, deux types de diffraction peuvent être observés : la diffraction de Fresnel et la diffraction de Fraunhofer. Dans le cas de Fresnel, ce type de diffraction survient lorsque la source, ou le plan image, est relativement près de le l'ouverture, c'est-à-dire en champ proche. La diffraction de Fraunhofer, pour sa part, se produit lorsque la source de lumière et le plan image sont suffisamment distancés de l'objet afin que les ondes puissent être considérées comme parallèles \cite{petrosyan_fourier_2024}.
 
-% Source A : https://www.olympus-lifescience.com/fr/microscope-resource/primer/lightandcolor/diffraction/
-% Source B : pdf FourierOptics
-
-\subsubsection{Approximation de Fraunholer}
-L'approximation de Fraunholer correspond à une simplification mathématique de la diffraction pour les champs lointains. Cette approximation permet d'analyser les patrons de diffraction produits par les objets diffractants, en décrivant les ondes lumineuses comme planes après le passage de l'objet. Mathématiquement, cette approximation peut se traduire de la manière suivante :
+\subsubsection{Approximation de Fraunhofer}
+L'approximation de Fraunhofer correspond à une simplification mathématique de la diffraction pour les champs lointains. Cette approximation permet d'analyser les patrons de diffraction produits par les objets diffractants, en décrivant les ondes lumineuses comme planes après le passage de l'objet. Mathématiquement, cette approximation peut se traduire de la manière suivante :
 \begin{equation}
   U(x,y,z)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}A(x',y')e^{-i(f_{x}x'+f_{y}y')}dx'dy'
 \end{equation}
-En optique, cette équation, l'équation de diffraction de Fraunholer, est utilisée afin d'obtenir directement le motif de diffraction en fonction de sa transformée de Fourier \textcolor{red}{(Source C)}. 
+En optique, cette équation, l'équation de diffraction de Fraunhofer, est utilisée afin d'obtenir directement le motif de diffraction en fonction de sa transformée de Fourier \cite{noauthor_fresnel_2022}. 
 
-% Source C : https://phys.libretexts.org/Bookshelves/Optics/BSc_Optics_(Konijnenberg_Adam_and_Urbach)/06%3A_Scalar_diffraction_optics/6.07%3A_Fresnel_and_Fraunhofer_Approximations
+\subsection{Système 4f}
+Les systèmes optiques à configuration 4f sont des systèmes utilisant l'optique de Fourier. Ces systèmes de deux lentilles sont couramment utilisés pour manipuler les fréquences spatiales d'une image en exploitant la transformée de Fourier des objets des plans focaux. La configuration 4F comprend un plan objet, situé à une distance de la première lentille égale à la focale de cette dite lentille, et un plan image, situé à une distance focale derrière la seconde lentille. Les deux lentilles sont séparées par le plan de Fourier, où l'objet subit une transformée de Fourier \cite{argueta_deciphering_2024}. Ce dernier se situe à la distance focale des deux lentilles, soit entre les deux.
 
-\subsection{Système 4F}
-Les systèmes optiques à configuration 4F sont des systèmes utilisant l'optique de Fourier. Ces systèmes de deux lentilles sont couramment utilisés pour manipuler les fréquences spatiales d'une image en exploitant la transformée de Fourier des objets des plans focaux. La configuration 4F comprend un plan objet, situé à une distance de la première lentille égale à la focale de cette dite lentille, et un plan image, situé à une distance focale derrière la seconde lentille. Les deux lentilles sont séparées par le plan de Fourier, où l'objet subit une transformée de Fourier \textcolor{red}{(Source Alpha)}.
-
-Le fonctionnement de ce type de configuration repose sur le principe de la transformée de Fourier. En effet, la première lentille transforme l'objet en une image de Fourier, c'est-à-dire que celle-ci est décomposée en composante de fréquence spatiale. Dans le plan de Fourier, où il est possible d'ajouter des filtres optiques, l'image transmise par la première lentille subit une transformée de Fourier. Cette transformée est, ensuite, transmise à la seconde lentille qui, par la transformée inverse, reconstitue l'image de l'objet. Cette image est, finalement, transmise au plan image afin d'être observée \textcolor{red}{(Source Bravo)}.
-
-% Source Alpha : https://www.opticsforhire.com/blog/4f-optical-system-fourier-optics/
-
-% Source Bravo : pdf nikhef
+Le fonctionnement de ce type de configuration repose sur le principe de la transformée de Fourier. En effet, la première lentille transforme l'objet en une image de Fourier, c'est-à-dire que celle-ci est décomposée en composante de fréquence spatiale. Dans le plan de Fourier, où il est possible d'ajouter des filtres optiques, l'image transmise par la première lentille subit une transformée de Fourier. Cette transformée est, ensuite, transmise à la seconde lentille qui, par la transformée inverse, reconstitue l'image de l'objet. Cette image est, finalement, transmise au plan image afin d'être observée \cite{noauthor_fourier_2012}.
 
 \subsection{Signaux, images et filtres}
 Tel que mentionné dans la section \ref{Fourier_optic}, l'optique de Fourier permet de passer au domaine fréquentiel spatial. De cette manière, les signaux, en optique de Fourier, correspondent à des distributions d'intensité lumineuses, ou phasiques, en fonction de la fréquence spatiale. Les images, produites par le traitement des signaux, sont alors représentées en termes de ces fréquences spatiales.
 
-Avec cette notion spatiale, les filtres, permettant la sélection de certaines composantes spatiales, peuvent être utilisés afin de manipuler l'information fréquentielle contenue dans les images, que ce soit en atténuant le bruit, en choisissant certaines fréquences, ou en accentuant les bords \textcolor{red}{(Source Z)}. Les filtres utilisés peuvent être de trois types différents : passe-bas, passe-haut et passe-bande. Par exemple, dans l'expérience réalisée, un filtre passe-bas haut-de-forme est utilisé, c'est-à-dire que les seules fréquences pouvant passer sont les basses fréquences spatiales jusqu'à une certaine coupure. Un autre filtre utilisé est le filtre gaussien qui, dans son cas, permet d'atténuer progressivement les hautes fréquences spatiales suivant une distribution gaussienne.
+Avec cette notion spatiale, les filtres, permettant la sélection de certaines composantes du spectre de fréquence, peuvent être utilisés afin de manipuler l'information fréquentielle contenue dans les images, que ce soit en atténuant le bruit, en choisissant certaines fréquences, ou en accentuant les bords \cite{noauthor_fourier_2024-2}. Les filtres utilisés peuvent être de trois types différents : passe-bas, passe-haut et passe-bande. Par exemple, dans l'expérience réalisée, un filtre passe-bas top-hat (haut-de-forme) est utilisé, c'est-à-dire que les seules fréquences pouvant passer sont les basses fréquences spatiales jusqu'à une certaine coupure. Un autre filtre utilisé est le filtre gaussien qui, dans son cas, permet d'atténuer progressivement les hautes fréquences spatiales suivant une distribution gaussienne. Ces filtres sont généralisables en 2D, où le top-hat est un disque sur l'espace de Fourier 2D qui laisse passer ou non les fréquences. La gaussienne, quant à elle, prend l'apparence d'une cloche.
 
-% Source Z : https://fiveable.me/optical-computing/unit-4/fourier-optics-spatial-filtering/study-guide/cGhLAP7EssS8bwjb
 \section{Méthodologie}
 
+Cette section présente la procédure générale pour l'expérience.
+
 \subsection{Présentations des montages}
-La méthodologie de ce laboratoire a pour but d'appliquer un filtre passe-bas à une image dans le domaine de Fourier, grâce à l'utilisation d'un système 4F. La figure \ref{montage} présente le montage utilisé pour y parvenir. 
+La méthodologie de ce laboratoire a pour but d'appliquer un filtre passe-bas à une image dans le domaine de Fourier, grâce à l'utilisation d'un système 4f. La figure \ref{montage} présente le montage utilisé pour y parvenir : 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.68]{montage.png}
-  \caption{Montage utilisé lors du laboratoire
+  \includegraphics[scale=0.8]{montage.png}
+  \caption{Montage utilisé lors du laboratoire \cite{sheehy_experience_2024}.}
   \label{montage}
 \end{figure}
 
-Ce montage est constitué d'une source de lumière focalisée sur un sténopé à l'aide d'un objectif de microscope afin de produire un profil d'intensité gaussien. Ce profil est ensuite envoyé au travers d'une image acétate à l'aide d'une lentille convergente $f_1$ permettant d'en ajuster les dimensions. Il ne faut ni que le profil soit trop petit par rapport à l'acétate, ni qu'il soit trop gros. Une fois l'image formée, elle est transmise à la caméra par l'intermédiaire d'un système 4F composé de deux lentilles convergentes, $f_2$ et $f_3$, permettant de passer dans le domaine de Fourier. Les lentilles composants ce système n'ont, à l'inverse d'un système 4F classique, pas les mêmes distances focales. Celle de $f_3$ par exemple permet de modifier le grossissement de l'image vue par la camera exactement comme $f_1$ vis-à-vis de l'acétate. Les différentes longueurs d'ondes utilisées lors de ce laboratoire sont : 
+Ce montage est constitué d'une source de lumière focalisée sur un sténopé à l'aide d'un objectif de microscope afin de produire un profil d'intensité gaussien. Ce profil est ensuite envoyé au travers d'une image acétate à l'aide d'une lentille convergente $f_1$ permettant d'en ajuster les dimensions. Il ne faut ni que le profil soit trop petit par rapport à l'acétate, ni qu'il soit trop gros. Une fois l'image formée, elle est transmise à la caméra par l'intermédiaire d'un système 4f composé de deux lentilles convergentes, $f_2$ et $f_3$, permettant de passer dans le domaine de Fourier. Les lentilles composants ce système n'ont, à l'inverse d'un système 4F classique, pas les mêmes distances focales. Celle de $f_3$ par exemple permet de modifier le grossissement de l'image vue par la camera exactement comme $f_1$ vis-à-vis de l'acétate. Les différentes lentilles utilisées lors de ce laboratoire sont : 
 
 \begin{enumerate}
-    \item $f_1$ = 30 cm, $\phi_1$ = 2" \\
-    \item $f_2$ = 50 cm, $\phi_2$ = 2" \\
-    \item $f_3$ = 10 cm, $\phi_3$ = 1" \\
+    \item $f_1$ = 30 cm, $\phi_1$ = 2"
+    \item $f_2$ = 50 cm, $\phi_2$ = 2"
+    \item $f_3$ = 10 cm, $\phi_3$ = 1"
 \end{enumerate}
 
 \subsection{Manipulations}
@@ -222,12 +210,12 @@ Ce montage est constitué d'une source de lumière focalisée sur un sténopé �
 Une fois le système monté, les manipulations à effectuer consistent à placer une image (acétate) sur le plan de Fourier et faire varier l'ouverture du sténopé de la façon suivante : 
 
 \begin{enumerate}
-    \item Ouverture complète \\
-    \item Ouverture limitée afin de faire disparaître les rayures verticales \\
-    \item Ouverture minimum \\
+    \item Ouverture complète
+    \item Ouverture limitée afin de faire disparaître les rayures verticales
+    \item Ouverture minimum
 \end{enumerate}
 
-Ce qui correspond donc à 3 images. La dernière manipulation du laboratoire consiste à prendre 10 images d'une cible de résolution placée à 2 positions différentes. Le tableau \ref{10images} présente les différents paramètres utilisés pour la prise des 10 images de la cible de résolution. 
+Cela correspond donc à 3 images. La dernière manipulation du laboratoire consiste à prendre 10 images d'une cible de résolution placée à deux positions différentes. Le tableau \ref{10images} présente les différents paramètres utilisés pour la prise des 10 images de la cible de résolution. 
 
 \begin{table}[h!]
 \centering
@@ -235,7 +223,7 @@ Ce qui correspond donc à 3 images. La dernière manipulation du laboratoire con
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Paramètres} & Position 1 & Position 2 \\ \hline
-Bandes visibles      & 1 à 7 & 8 à 14  \\ \hline
+Nb bandes visibles      & 1 à 7 & 8 à 14  \\ \hline
 Ouvertures (mm)            & 1, 2, 4 & 3, 4, 5, 6, 7, 9, 16, 25  \\ \hline
 \end{tabular}%
 }
@@ -246,9 +234,9 @@ Ouvertures (mm)            & 1, 2, 4 & 3, 4, 5, 6, 7, 9, 16, 25  \\ \hline
 Pour l'entièreté des images, les paramètres à utiliser sur le logiciel Thorcam de la caméra sont : 
 
 \begin{enumerate}
-    \item Frame rate $\rightarrow$ max\\
-    \item Gain → auto \\
-    \item Gainboost → on\\
+    \item Frame rate $\rightarrow$ max
+    \item Gain → auto
+    \item Gainboost → on
     \item White balance → auto
 \end{enumerate}
 
@@ -351,7 +339,7 @@ Les ondes observées près des contours sont donc un symptôme de la transformé
 
 \clearpage
 
-% \bibliographystyle{unsrtnat}
-% \bibliography{My_Library}
+\bibliographystyle{unsrtnat}
+\bibliography{filtrage_spatial.bib}
 
 \end{document}
