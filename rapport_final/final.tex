@@ -156,11 +156,53 @@ Polytechnique Montréal\\}
 \section{Discussion}
 
 \subsection{Question 1}
+Pour trouver la fréquence de coupure de l'iris selon les paramètres physiques de l'expérience, les deux équations de fréquences spatiales peuvent être utilisées. L'équation pour la fréquence spatiale en $x$ est donnée par :
+\begin{equation}
+  f_{x}=\frac{x}{\lambda f}
+  \label{eqfx}
+\end{equation}
+Et celle en $y$ est donnée par :
+\begin{equation}
+  f_{y}=\frac{y}{\lambda f}
+  \label{eqfy}
+\end{equation}
+Où $\lambda$ est la longueur d'onde de la lumière, et $f$ est la longueur focale de la lentille utilisée. Puisque le filtre est de forme circulaire, il est possible de modéliser la fréquence de coupure à l'aide de l'équation d'un cercle, soit la suivante :
+\begin{equation}
+  x^{2}+y^{2}=r^{2}
+  \label{eqcercle}
+\end{equation}
+Où $r$ correspond au rayon de l'iris. Donc, en isolant les variables $x$ et $y$ dans les équations \ref{eqfx} et \ref{eqfy}, et en remplaçant dans l'équation ci-dessus (Annexe), le résultat suivant est obtenu :
+\begin{equation}
+  f_{c}=\frac{r}{\lambda f}=\frac{d}{2\lambda f}
+  \label{eqfc}
+\end{equation}
+Ainsi, la fréquence de coupure de l'iris selon les paramètres physiques est donnée par l'équation ci-dessus.
+
+\textcolor{red}{RÉSULTATS COHÉRENTS AVEC THEO?}
 
 \subsection{Question 2}
 
 \section{Conclusion}
 
+\newpage\section*{Annexe}
+Avec les équations $f_{x}$ et $f_{y}$, les variables $x$ et $y$ sont isolées, permettant d'obtenir les équations suivantes :
+\begin{align*}
+  x&=f_{x}\lambda f & y&=f_{y}\lambda f \\
+\end{align*}
+En remplaçant dans l'équation \ref{eqcercle}, le résultat suivant est obtenu.
+\begin{align*}
+  (f_{x}\lambda f)^{2}+(f_{y}\lambda f)^{2}&=r^{2} \\
+  f_{x}^{2}\lambda^{2}f^{2}+f_{y}^{2}\lambda^{2}f^{2}&=r^{2} \\
+  \lambda^{2}f^{2}(f_{x}^{2}+f_{y}^{2})&=r^{2} \\
+\end{align*}
+En réarrangeant les termes, le résultat suivant est obtenu.
+\begin{equation*}
+  (f_{x}^{2}+f_{y}^{2})=\frac{r^{2}}{\lambda^{2}f^{2}}
+\end{equation*}
+Les deux fréquences spatiales $f_{x}$ et $f_{y}$ correspondent à la fréquence recherchée, ainsi l'équation mène à celle \ref{eqfc}, soit :
+\begin{equation*}
+  f_{c}=\frac{r}{\lambda f}=\frac{d}{2\lambda f}
+\end{equation*} 
 
 \clearpage
 
