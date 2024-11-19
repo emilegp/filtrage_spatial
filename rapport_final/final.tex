@@ -140,22 +140,173 @@ Polytechnique Montréal\\}
 
 \section{Résultats}
 
+Cette section présente tous les résultats des manipulations, soit les images prises de l'acétate de Marvin
+ainsi que de la cible de résolution.
+
 \subsection{Cibles de résolution}
+
+Pour les cibles de résolution des figures \ref{cible1.2} à \ref{cible25}, les fréquences de coupure ont été identifiées en déterminant la
+valeur de fréquence spatiale la plus petite où les barres verticales étaient toujours distinguables.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.3]{cible_d1.2_1-7.png}
-  \caption{}
-  \label{}
+  \includegraphics[scale=0.26]{cible_d1.2_1-7.png}
+  \caption{Cible de résolution entre 1.25 et 3.85 mm$^{-1}$ pour un diamètre d'ouverture de l'iris de 1 mm. La fréquence de coupure est identifiée au minimum, soit 1.25 mm$^{-1}$.}
+  \label{cible1.2}
 \end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.26]{cible_d2_1-7.png}
+  \caption{Cible de résolution entre 1.25 et 3.85 mm$^{-1}$ pour un diamètre d'ouverture de l'iris de 2 mm. La fréquence de coupure est identifiée à 3.33 mm$^{-1}$.}
+  \label{cible2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.28]{cible_d4_1-7.png}
+  \caption{Cible de résolution entre 1.25 et 3.85 mm$^{-1}$ pour un diamètre d'ouverture de l'iris de 2 mm. La fréquence de coupure n'est pas identifiable.}
+  \label{cible4-1-7}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.28]{cible_d3_8-14.png}
+  \caption{Cible de résolution entre 4.17 et 26 mm$^{-1}$ pour un diamètre d'ouverture de l'iris de 3 mm. La fréquence de coupure est identifiée à 5.88 mm$^{-1}$.}
+  \label{cible3}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.28]{cible_d4_8-14.png}
+  \caption{Cible de résolution entre 4.17 et 26 mm$^{-1}$ pour un diamètre d'ouverture de l'iris de 4 mm. La fréquence de coupure est identifiée à 6.67 mm$^{-1}$.}
+  \label{cible4-8-14}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.28]{cible_d5_8-14.png}
+  \caption{Cible de résolution entre 4.17 et 26 mm$^{-1}$ pour un diamètre d'ouverture de l'iris de 5 mm. La fréquence de coupure est identifiée à 6.67 mm$^{-1}$.}
+  \label{cible5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.28]{cible_d7_8-14.png}
+  \caption{Cible de résolution entre 4.17 et 26 mm$^{-1}$ pour un diamètre d'ouverture de l'iris de 7 mm. La fréquence de coupure est identifiée à 6.67 mm$^{-1}$.}
+  \label{cible7}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.28]{cible_d9_8-14.png}
+  \caption{Cible de résolution entre 4.17 et 26 mm$^{-1}$ pour un diamètre d'ouverture de l'iris de 9 mm. La fréquence de coupure est identifiée à 10 mm$^{-1}$.}
+  \label{cible9}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.28]{cible_d16_8-14.png}
+  \caption{Cible de résolution entre 4.17 et 26 mm$^{-1}$ pour un diamètre d'ouverture de l'iris de 16 mm. La fréquence de coupure est identifiée à 16.67 mm$^{-1}$.}
+  \label{cible16}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.28]{cible_d25_8-14.png}
+  \caption{Cible de résolution entre 4.17 et 26 mm$^{-1}$ pour un diamètre d'ouverture de l'iris de 25 mm. La fréquence de coupure est identifiée à 26 mm$^{-1}$.}
+  \label{cible25}
+\end{figure}
+
+Les fréquences de coupure sont compilées et affichées dans le graphique de la figure \ref{plot}. Les incertitudes sur
+le diamètre d'ouverture de l'iris $d$ sont données par la moitié de la plus petite graduation de l'instrument de mesure,
+doublée car la mesure se fait à deux points. Cela donne $\Delta d = 1$ mm. Cette incertitude se propage facilement sur
+la fréquence de coupure $f_c$  par la méthode des dérivées partielles. Pour cela, il faut la relation théorique entre la
+fréquence de coupure et l'ouverture. Cette dernière est dérivée en détail à la section \ref{q1}, elle est :
+
+\begin{equation}
+  f_c(d)= \frac{d}{2\lambda f}
+\end{equation}
+
+où $\lambda = 632$ nm est la longueur d'onde du laser rouge utilisé et $f = 50$ cm est la focale de la lentille avant le
+plan de Fourier, où les filtres sont appliqués. La méthode des dérivées partielles dicte que l'incertitude sur la
+fréquence de coupure $\Delta f_c$ est donnée par :
+
+\begin{equation}
+  \Delta f_c = \frac{\partial f_c}{\partial d}\Delta d = \frac{\Delta d}{2 \lambda f} \approx 1.58 \text{ mm}^{-1} 
+\end{equation}
+
+Ainsi, avec les barres d'erreurs :
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.9]{graph_fc.png}
+  \caption{Graphique des données expérimentales comparée avec la prédiction théorique. Les incertitudes sur la fréquence
+  de coupure sont la propagation des incertitudes du diamètre d'ouverture de l'iris.}
+  \label{plot}
+\end{figure}
+
 
 
 \subsection{Marvin}
 
+Les figures \ref{marvin_min} à \ref{marvin_max} montrent l'application du filtre passe-bas sur la transformée de
+Fourier, avec plusieurs diamètres d'iris (donc fréquences de coupure) appliquées.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.28]{marvin_min.png}
+  \caption{Image de l'acétate de Marvin filtrée par l'ouverture minimale de l'iris $d =$ 1.2 mm.}
+  \label{marvin_min}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.28]{marvin_partiel_d2.png}
+  \caption{Image de l'acétate de Marvin filtrée par l'ouverture intermédiaire de l'iris à $d =$ 2 mm.}
+  \label{marvin_mid}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.28]{marvin_max_d12-5.png}
+  \caption{Image de l'acétate de Marvin filtrée par l'ouverture maximale de l'iris à $d =$ 12.5 mm.}
+  \label{marvin_max}
+\end{figure}
+
+Il est possible d'observer que le filtre pour enlever les barres verticales fonctionne partiellement pour
+une ouverture plus petite, mais a pour conséquece de flouter et d'assombrir grandement l'image. De plus, les 
+barres ne sont jamais totalement enlevées.
 
 \section{Discussion}
 
-\subsection{Question 1}
+Afin de comparer les résultats obtenus pour les filtres appliqués sur l'acétate de Marvin avec le modèle théorique,
+quelques valeurs de filtres utilisées en laboratoire ont été implémentes sur l'image \texttt{marvin\_striped} avec
+un filtre passe-bas top-hat, tel qu'affiché à la figure \ref{cats} :
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.7]{marvin_post_filter_bars.png}
+  \caption{Résultat de l'application de filtres top-hat $f_c$ sur l'image de Marvin avec les bandes verticales.}
+  \label{cats}
+\end{figure}
+
+À titre de référence, l'image originelle de Marvin avec les barres et sa transformée de Fourier sont présentées à la
+figure \ref{cat} :
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.65]{marvin_bars.png}
+  \caption{Image originale de Marvin avec les bandes et affichage de sa transformée de Fourier, sur laquelle les filtres
+  top-hat sont appliqués}
+  \label{cat}
+\end{figure}
+
+\subsection{Comparaison entre la théorie et l'expérience}
+
+
+
+\subsection{Question 1}\label{q1}
 
 \subsection{Question 2}
 
