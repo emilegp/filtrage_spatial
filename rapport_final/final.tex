@@ -226,6 +226,7 @@ fréquence de coupure et l'ouverture. Cette dernière est dérivée en détail �
 
 \begin{equation}
   f_c(d)= \frac{d}{2\lambda f}
+  \label{eqfcoup}
 \end{equation}
 
 où $\lambda = 632$ nm est la longueur d'onde du laser rouge utilisé et $f = 50$ cm est la focale de la lentille avant le
@@ -302,9 +303,10 @@ figure \ref{cat} :
   \label{cat}
 \end{figure}
 
-\subsection{Comparaison entre la théorie et l'expérience}
+\subsection{Comparaison entre la théorie et l'expérience}\label{comptheoexp}
+Pour effectuer une juste comparaison, les filtres par ouverture sont associées à une fréquence de coupure à l'aide de l'équation \ref{eqfcoup}. À l'aide de cette équation, pour les diamètres de 1.2 mm, 2 mm, et 12.5 mm, les valeurs de fréquence de coupure sont respectivement de 1.899 mm$^{-1}$, 3.165 mm$^{-1}$, et 19.778 mm$^{-1}$. En comparant les images expérimentales, soient les figures \ref{marvin_min} à \ref{marvin_max}, avec les images théoriques correspondantes, figure \ref{cats}, une différence notable est observée. En effet, pour le résultat expérimental de la figure \ref{marvin_max}, l'image, contrairement au résultat théorique, est plus définie, sans aucun flou, et n'atténue aucune ligne verticale. Pour le résultat de la figure \ref{marvin_mid}, les lignes verticales, similairement à la théorie, sont fortement atténuées, mais elles sont, toutefois, encore légèrement visibles. En théorie, tel qu'illustré sur la première image de la figure \ref{cats}, les lignes verticales devraient être entièrement disparues pour ne laisser place qu'à une image fortement flouée. Finalement, pour l'image expérimentale pour le diamètre minimale, soit la figure \ref{marvin_min}, il est possible d'observer que le filtre a permis d'enlever les lignes verticales, ce qui s'approche des résultats théoriques. Or, pour la fréquence de coupure donnée par ce diamètre, le niveau de floutage est fortement inférieur.
 
-
+Les variations entre les résultats expérimentaux et ceux théoriques peuvent être expliquées par plusieurs causes d'erreurs. Parmi celles-ci, l'alignement ainsi que le positionnement des composantes optiques, et les aberrations optiques sont des erreurs considérées. En effet, des imprécisions dans l'alignement, tel que le faisceau non-centré, peut provoquer une mauvaise focalisation de l'image dans le plan de Fourier, perturbant l'efficacité du filtre passe-bas. Les fréquences spatiales, dans le cas d'un alignement imparfait, ne sont pas entièrement, ou correctement, filtrées, laissant ainsi une partie des fréquences correspondant aux bandes. Similairement, un mauvais positionnement dans les composantes optiques, par exemple une lentille qui n'est pas exactement à la distance focale, influence l'efficacité du filtrage. Finalement, les aberrations optiques peuvent, elles-aussi, jouées un rôle dans les divergences de résultats. Effectivement, ces aberrations peuvent déformer l'image, pouvant brouiller ou détourner certaines fréquences. De ce fait, le filtre ne serait pas en mesure de supprimer correctement les hautes fréquences.
 
 \subsection{Question 1}\label{q1}
 
@@ -330,9 +332,21 @@ Où $r$ correspond au rayon de l'iris. Donc, en isolant les variables $x$ et $y$
 \end{equation}
 Ainsi, la fréquence de coupure de l'iris selon les paramètres physiques est donnée par l'équation ci-dessus.
 
-\textcolor{red}{RÉSULTATS COHÉRENTS AVEC THEO?}
+\subsubsection{Cohérence des fréquences de coupure expérimentales}
+En observant la figure \ref{plot}, il est possible d'observer que les résultats ne sont pas entièrement cohérents avec la théorie. En effet, pour les faibles diamètres d'iris, de 0 à 5 mm, les données suivent bien la tendance prédite par le modèle théorique, soit une régression linéaire. Cependant, pour les diamètres supérieurs à 5 mm, il est possible d'observer un écart entre les valeurs expérimentales et celles théoriques. En d'autres termes, les fréquences expérimentales sont systématiquement inférieures à celles modélisées. Ces différences peuvent être expliquées par plusieurs causes d'erreurs, semblables à celles mentionnées à la section \ref{comptheoexp}.
+
+Par exemple, dans le cas des fréquences de coupures, l'alignement imparfait du système optique, mentionné plus haut, peut introduire une distribution asymétrique des fréquences spatiales. Ensuite, puisque les diamètres ne pouvaient pas être réglés de manière précise, une variabilité des mesures est introduite, et, considérant que le calcul de la fréquence de coupure dépend du diamètre, un mauvais réglage modifie la valeur théorique attendue. De plus, les aberrations optiques, tels que les aberrations sphériques, ou l'astigmatisme, peuvent modifier la répartition des fréquences dans le plan de Fourier. Finalement, lorsque l'iris est grandement ouvert, la diffraction peut perturber les fréquences spatiales en créant des franges et des interférences, ce qui peut influencer les valeurs mesurées.
 
 \subsection{Question 2}
+Le système 4F, à l'aide de l'optique de Fourier, est utilisé afin de manipuler les composantes fréquentielles d'une image. De cette manière, la possibilité de contrôler l'information spatiale au plan de Fourier est particulièrement utile pour les filtres spatiaux, l'amplification, ou la réduction de certaines fréquences. Par exemple, ce type de système peut être utilisé pour le filtrage spatial et le traitement d'image. En effet, en insérant des filtres au plan de Fourier, tel que réalisé dans cette expérience, il est possible d'éliminer certaines fréquences, permettant ainsi d'atténuer le bruit ou d'amplifier certains détails. De plus, le système 4F peut être utilisé en microscopie et en spectroscopie, effectuant le même processus de sélection de fréquences.
+
+Pour créer un filtre passe-haut, les basses fréquences doivent être bloquées de sorte que seulement les hautes fréquences puissent passer au plan de Fourier. Pour ce faire, un disque opaque doit être placé au centre du plan de Fourier, où se concentrent les basses fréquences, et doit laisser les fréquences autour passer, tel qu'illustré ci-dessous.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.35]{filtrepassehaut.png}
+  \caption{Exemple de filtre passe-haut.}
+\end{figure}
+Ainsi, cet exemple de filtre permettrait de bloquer les faibles fréquences se concentrant au centre, et de ne laisser passer que les périphériques, correspondant aux hautes fréquences.
 
 \section{Conclusion}
 
